@@ -1,0 +1,25 @@
+From 74f52c1eef2b8e3c69c821d1b97a56e19fcf5caf Mon Sep 17 00:00:00 2001
+From: Andres <apascual89@gmail.com>
+Date: Wed, 22 Jul 2015 20:34:29 -0400
+Subject: [PATCH] shamu: fstab: don't force encrypt
+
+---
+ fstab.shamu | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fstab.shamu b/fstab.shamu
+index aba3d55..3eed38d 100644
+--- a/fstab.shamu
++++ b/fstab.shamu
+@@ -4,8 +4,8 @@
+ #
+ #<src>                                                <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
+ /dev/block/platform/msm_sdcc.1/by-name/system         /system      ext4    ro,barrier=1                                wait
+-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                 wait,formattable,forceencrypt=/dev/block/platform/msm_sdcc.1/by-name/metadata
+-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier    wait,formattable,check,forceencrypt=/dev/block/platform/msm_sdcc.1/by-name/metadata
++/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                 wait,formattable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
++/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier    wait,formattable,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+ /dev/block/platform/msm_sdcc.1/by-name/cache        /cache          f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                 wait,check,formattable
+ /dev/block/platform/msm_sdcc.1/by-name/cache       /cache       ext4    rw,noatime,nosuid,nodev,barrier=1,data=ordered   wait,check,formattable
+ /dev/block/platform/msm_sdcc.1/by-name/modem       /firmware    ext4    ro,barrier=1,context=u:object_r:firmware_file:s0    wait
+
