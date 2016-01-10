@@ -183,6 +183,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     fmas.spkr_angles=10 \
     fmas.spkr_sgain=0 \
 
+# Camera
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmm-qcamera \
@@ -190,7 +191,11 @@ PRODUCT_PACKAGES += \
     libmmjpeg_interface \
     camera.msm8084 \
     mm-jpeg-interface-test \
-    mm-qcamera-app
+    mm-qcamera-app \
+    Snap
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.camera-sound=1
 
 PRODUCT_PACKAGES += \
     libion
