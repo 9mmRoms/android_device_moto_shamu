@@ -194,6 +194,10 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app \
     Snap
 
+# Snap Config
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.cpp.duplication=false
+
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.camera-sound=1
 
