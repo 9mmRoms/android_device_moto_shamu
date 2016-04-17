@@ -201,6 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.camera-sound=1
 
+# Doze
+PRODUCT_PACKAGES += \
+    CMActions
+
 PRODUCT_PACKAGES += \
     libion
 
