@@ -93,6 +93,10 @@ on property:dev.bootcomplete=1
     write /sys/kernel/state_helper/batt_level_cri 1
     write /sys/kernel/state_helper/batt_level_eco 15
 
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+
     # I/O
     setprop sys.io.scheduler "bfq"
     write /sys/block/mmcblk0/queue/scheduler bfq
