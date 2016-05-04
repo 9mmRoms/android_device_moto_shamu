@@ -205,6 +205,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     CMActions
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 PRODUCT_PACKAGES += \
     libion
 
