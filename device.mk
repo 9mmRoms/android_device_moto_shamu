@@ -169,7 +169,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.rec_timeout=2500 \
     ro.facelock.lively_timeout=2500 \
     ro.facelock.est_max_time=600 \
-    ro.facelock.use_intro_anim=false
+    ro.facelock.use_intro_anim=false \
+    audio.offload.pcm.24bit.enable=true
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -378,6 +379,9 @@ endif
 
 # Enable for volte call
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+
+# Enable enhanced offload features
+AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=96 \
