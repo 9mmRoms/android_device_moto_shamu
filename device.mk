@@ -170,6 +170,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.lively_timeout=2500 \
     ro.facelock.est_max_time=600 \
     ro.facelock.use_intro_anim=false \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.video=true \
+    audio.offload.multiple.enabled=false \
+    audio.offload.gapless.enabled=true \
+    audio.offload.pcm.16bit.enable=true \
     audio.offload.pcm.24bit.enable=true
 
 # Audio effects
