@@ -197,15 +197,7 @@ PRODUCT_PACKAGES += \
     libmmjpeg_interface \
     camera.msm8084 \
     mm-jpeg-interface-test \
-    mm-qcamera-app \
-    Snap
-
-# Snap Config
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.cpp.duplication=false
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.camera-sound=1
+    mm-qcamera-app
 
 # Doze
 PRODUCT_PACKAGES += \
