@@ -112,4 +112,7 @@
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
+
+    <!-- Enable blur support -->
+    <bool name="config_ui_blur_enabled">true</bool>
 </resources>
