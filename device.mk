@@ -203,6 +203,10 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# Doze
+PRODUCT_PACKAGES += \
+    MotoDoze
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap
