@@ -187,8 +187,8 @@ PRODUCT_PACKAGES += \
     e2fsck
 
 # for launcher layout
-#PRODUCT_PACKAGES += \
-#    ShamuLayout
+PRODUCT_PACKAGES += \
+    ShamuLayout
 
 PRODUCT_PACKAGES += \
     bdAddrLoader
