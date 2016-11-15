@@ -333,6 +333,10 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
     QXDMLogger
 
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
+
 # Disable modem ramdumps
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rdump.on=0
