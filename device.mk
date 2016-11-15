@@ -203,6 +203,18 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
+# Snap Config
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.cpp.duplication=false
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
 
