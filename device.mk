@@ -174,6 +174,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.monitorRotation=true
 
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
+
 # RRM service
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -426,6 +430,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     power.shamu \
+    android.hardware.power@1.0-impl \
     thermal.shamu
 
 # For android_filesystem_config.h
