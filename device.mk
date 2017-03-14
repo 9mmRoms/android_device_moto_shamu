@@ -184,12 +184,7 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
 
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-
-ifeq ($(ENABLE_TREBLE), true)
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-service
-endif
+    android.hardware.drm@1.0-impl
 
 # RRM service
 PRODUCT_PROPERTY_OVERRIDES += \
