@@ -45,6 +45,8 @@ static int client_sockfd;
 static struct sockaddr_un client_addr;
 static int last_state = -1;
 
+static pthread_mutex_t profile_lock = PTHREAD_MUTEX_INITIALIZER;
+
 enum {
     PROFILE_POWER_SAVE = 0,
     PROFILE_BALANCED,
@@ -93,10 +95,6 @@ static void coresonline(int off)
         snprintf(data, MAX_LENGTH, "7:%d", client);
         rc = sendto(client_sockfd, data, strlen(data), 0, (const struct sockaddr *)&client_addr, sizeof(struct sockaddr_un));
     }
-
-    if (rc < 0) {
-        //ALOGE("%s: failed to send: %s", __func__, strerror(errno));
-    }
 }
 
 static void enc_boost(int off)
@@ -120,10 +118,6 @@ static void enc_boost(int off)
         snprintf(data, MAX_LENGTH, "6:%d", client);
         rc = sendto(client_sockfd, data, strlen(data), 0,
             (const struct sockaddr *)&client_addr, sizeof(struct sockaddr_un));
-    }
-
-    if (rc < 0) {
-        //ALOGE("%s: failed to send: %s", __func__, strerror(errno));
     }
 }
 
@@ -149,7 +143,6 @@ static void process_video_encode_hint(void *metadata)
     }
 }
 
-
 static void touch_boost()
 {
     int rc, fd;
@@ -167,9 +160,6 @@ static void touch_boost()
     snprintf(data, MAX_LENGTH, "1:%d", client);
     rc = sendto(client_sockfd, data, strlen(data), 0,
         (const struct sockaddr *)&client_addr, sizeof(struct sockaddr_un));
-    if (rc < 0) {
-        //ALOGE("%s: failed to send: %s", __func__, strerror(errno));
-    }
 }
 
 static void low_power(int on)
@@ -188,15 +178,9 @@ static void low_power(int on)
     if (on) {
         snprintf(data, MAX_LENGTH, "10:%d", client);
         rc = sendto(client_sockfd, data, strlen(data), 0, (const struct sockaddr *)&client_addr, sizeof(struct sockaddr_un));
-        if (rc < 0) {
-            //ALOGE("%s: failed to send: %s", __func__, strerror(errno));
-        }
     } else {
         snprintf(data, MAX_LENGTH, "9:%d", client);
         rc = sendto(client_sockfd, data, strlen(data), 0, (const struct sockaddr *)&client_addr, sizeof(struct sockaddr_un));
-        if (rc < 0) {
-            //ALOGE("%s: failed to send: %s", __func__, strerror(errno));
-        }
     }
 }
 
@@ -289,29 +273,27 @@ int get_feature(struct power_module *module __unused, feature_t feature)
 }
 
 static void power_hint( __attribute__((unused)) struct power_module *module,
-                        __attribute__((unused)) power_hint_t hint,
-                        __attribute__((unused)) void *data)
+                      power_hint_t hint, void *data)
 {
+    if (hint == POWER_HINT_SET_PROFILE) {
+        pthread_mutex_lock(&profile_lock);
+        set_power_profile(*(int32_t *)data);
+        pthread_mutex_unlock(&profile_lock);
+        return;
+    }
+
+    // Skip other hints in powersave mode
+    if (current_power_profile == PROFILE_POWER_SAVE)
+        return;
+
     switch (hint) {
-        case POWER_HINT_INTERACTION:
-            if (current_power_profile == PROFILE_POWER_SAVE)
-                return;
+        case POWER_HINT_LAUNCH:
+        case POWER_HINT_CPU_BOOST:
             //ALOGV("POWER_HINT_INTERACTION");
             touch_boost();
             break;
         case POWER_HINT_VIDEO_ENCODE:
-            if (current_power_profile != PROFILE_BALANCED)
-                return;
             process_video_encode_hint(data);
-            break;
-        case POWER_HINT_SET_PROFILE:
-            set_power_profile(*(int32_t *)data);
-            break;
-        case POWER_HINT_LOW_POWER:
-            if (*(int32_t *)data == 1)
-                set_power_profile(PROFILE_POWER_SAVE);
-            else
-                set_power_profile(PROFILE_BALANCED);
             break;
         default:
             break;
