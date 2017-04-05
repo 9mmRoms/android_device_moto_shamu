@@ -217,8 +217,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false
 
 # Gello
-PRODUCT_PACKAGES += \
-    Gello
+#PRODUCT_PACKAGES += \
+#    Gello
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
