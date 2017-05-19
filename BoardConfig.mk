@@ -140,4 +140,6 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw
 
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
