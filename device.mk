@@ -222,11 +222,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=rome
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.hw=1 \
-    debug.sf.hw=1 \
-    debug.gralloc.enable_fb_ubwc=1 \
-    persist.hwc.enable_vds=1 \
-    sdm.perf_hint_window=50 \
     ro.opengles.version=196610
 
 PRODUCT_PROPERTY_OVERRIDES += \
