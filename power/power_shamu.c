@@ -30,7 +30,6 @@
 #include <stdbool.h>
 
 #define LOG_TAG "PowerHAL"
-#define LOG_NDEBUG 0
 #include <utils/Log.h>
 
 #include <hardware/hardware.h>
@@ -151,7 +150,6 @@ static void touch_boost()
     char buf[MAX_LENGTH];
 
     if (client_sockfd < 0) {
-        ALOGE("%s: boost socket not created", __func__);
         return;
     }
 
@@ -169,7 +167,6 @@ static void low_power(int on)
     char data[MAX_LENGTH];
 
     if (client_sockfd < 0) {
-        ALOGE("%s: boost socket not created", __func__);
         return;
     }
 
@@ -275,25 +272,31 @@ int get_feature(struct power_module *module __unused, feature_t feature)
 static void power_hint( __attribute__((unused)) struct power_module *module,
                       power_hint_t hint, void *data)
 {
-    if (hint == POWER_HINT_SET_PROFILE) {
-        pthread_mutex_lock(&profile_lock);
-        set_power_profile(*(int32_t *)data);
-        pthread_mutex_unlock(&profile_lock);
-        return;
-    }
-
-    // Skip other hints in powersave mode
-    if (current_power_profile == PROFILE_POWER_SAVE)
-        return;
-
     switch (hint) {
+        case POWER_HINT_INTERACTION:
         case POWER_HINT_LAUNCH:
         case POWER_HINT_CPU_BOOST:
-            //ALOGV("POWER_HINT_INTERACTION");
+            if (current_power_profile == PROFILE_POWER_SAVE)
+                return;
             touch_boost();
             break;
         case POWER_HINT_VIDEO_ENCODE:
+            if (current_power_profile != PROFILE_BALANCED)
+                return;
             process_video_encode_hint(data);
+            break;
+        case POWER_HINT_SET_PROFILE:
+            pthread_mutex_lock(&profile_lock);
+            set_power_profile(*(int32_t *)data);
+            pthread_mutex_unlock(&profile_lock);
+            break;
+        case POWER_HINT_LOW_POWER:
+            pthread_mutex_lock(&profile_lock);
+            if (data)
+                set_power_profile(PROFILE_POWER_SAVE);
+            else
+                set_power_profile(PROFILE_BALANCED);
+            pthread_mutex_unlock(&profile_lock);
             break;
         default:
             break;
