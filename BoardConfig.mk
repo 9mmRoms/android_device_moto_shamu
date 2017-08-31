@@ -147,4 +147,6 @@ BOARD_HARDWARE_CLASS := \
 
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
+TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk

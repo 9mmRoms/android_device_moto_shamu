@@ -1,5 +1,5 @@
 # Integrated qualcomm sensor process
-type sensors, domain, domain_deprecated;
+type sensors, domain, device_domain_deprecated;
 type sensors_exec, exec_type, file_type;
 
 # Started by init
@@ -36,3 +36,4 @@ allow sensors persist_sensors_file:dir rw_dir_perms;
 allow sensors persist_sensors_file:file create_file_perms;
 
 allow sensors self:socket *;
+allowxperm sensors self:socket ioctl msm_sock_ipc_ioctls;

@@ -1,5 +1,5 @@
 # CPU governor (root process)
-type mpdecision, domain, domain_deprecated;
+type mpdecision, domain, device_domain_deprecated;
 type mpdecision_exec, exec_type, file_type;
 
 # Started by init
@@ -20,6 +20,7 @@ allow mpdecision kernel:process setsched;
 allow mpdecision self:capability { dac_override net_admin fsetid chown };
 allow mpdecision self:netlink_kobject_uevent_socket { create read setopt bind };
 allow mpdecision self:socket create_socket_perms;
+allowxperm mpdecision self:socket ioctl msm_sock_ipc_ioctls;
 allow mpdecision power_control_device:chr_file w_file_perms;
 allow mpdecision mpdecision_socket:dir rw_dir_perms;
 allow mpdecision mpdecision_socket:sock_file { create_file_perms unlink };
