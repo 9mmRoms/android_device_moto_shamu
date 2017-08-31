@@ -181,7 +181,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Camera2
 
 PRODUCT_PACKAGES += \
     libqomx_core \
