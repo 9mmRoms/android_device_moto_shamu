@@ -50,8 +50,8 @@ PRODUCT_COPY_FILES += \
     device/moto/shamu/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/moto/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
-PRODUCT_COPY_FILES += \
-    device/moto/shamu/blur/libuiblur.so:system/vendor/lib/libuiblur.so
+#PRODUCT_COPY_FILES += \
+#    device/moto/shamu/blur/libuiblur.so:system/vendor/lib/libuiblur.so
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
