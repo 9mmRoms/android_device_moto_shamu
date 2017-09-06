@@ -124,6 +124,8 @@ BOARD_SEPOLICY_DIRS += device/moto/shamu/sepolicy
 
 HAVE_ADRENO_SOURCE:= false
 
+TARGET_USES_GRALLOC1 := true
+TARGET_USES_NEW_ION_API := true
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
