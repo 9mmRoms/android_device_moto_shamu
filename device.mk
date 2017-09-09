@@ -171,12 +171,18 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libOmxVenc
 
+# Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm8084 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler \
+    libaudio-resampler
+
+# Audio effects
+PRODUCT_PACKAGES += \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
     libqcompostprocbundle
 
@@ -197,12 +203,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.det_timeout=2500 \
     ro.facelock.rec_timeout=3500 \
     ro.facelock.est_max_time=600
-
-# Audio effects
-PRODUCT_PACKAGES += \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors
 
 PRODUCT_PROPERTY_OVERRIDES += \
     fmas.spkr_6ch=35,20,110 \
