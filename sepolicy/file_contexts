@@ -190,3 +190,6 @@
 
 /dev/socket/cnd  u:object_r:cnd_socket:s0
 /system/bin/cnd  u:object_r:cnd_exec:s0
+
+# HALs
+/system/vendor/bin/hw/android\.hardware\.light@2\.0-service.shamu        u:object_r:hal_light_default_exec:s0
