@@ -443,15 +443,10 @@ static int get_platform_low_power_stats(struct power_module *module,
     list[0].voters[0].total_time_in_msec_voted_for_since_boot = stats[4];
     list[0].voters[0].total_number_of_times_voted_since_boot = stats[5];
 
-    /* Update statistics for MPSS voter */
-    strcpy(list[0].voters[1].name, "MPSS");
+    /* Update statistics for LPASS voter */
+    strcpy(list[0].voters[1].name, "LPASS");
     list[0].voters[1].total_time_in_msec_voted_for_since_boot = stats[6];
     list[0].voters[1].total_number_of_times_voted_since_boot = stats[7];
-
-    /* Update statistics for LPASS voter */
-    strcpy(list[0].voters[2].name, "LPASS");
-    list[0].voters[2].total_time_in_msec_voted_for_since_boot = stats[8];
-    list[0].voters[2].total_number_of_times_voted_since_boot = stats[9];
 
     /* Update statistics for VMIN state */
     strcpy(list[1].name, "VMIN");
