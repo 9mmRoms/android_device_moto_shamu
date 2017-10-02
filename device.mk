@@ -217,12 +217,12 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl
 
 PRODUCT_PACKAGES += \
-    libqomx_core \
-    libmm-qcamera \
-    libmmcamera_interface \
-    libmmjpeg_interface \
     camera.msm8084 \
-    mm-jpeg-interface-test \
+    libcamera \
+    libmmcamera_interface \
+    libmmcamera_interface2 \
+    libmmjpeg_interface \
+    libqomx_core \
     mm-qcamera-app
 
 PRODUCT_PACKAGES += \
