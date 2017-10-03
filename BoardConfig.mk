@@ -109,7 +109,7 @@ HWUI_COMPILE_FOR_PERF := true
 
 TARGET_RECOVERY_FSTAB = device/moto/shamu/fstab.shamu
 # Ensure f2fstools are built
-TARGET_USERIMAGES_USE_F2FS := true
+#TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/moto/shamu
 
