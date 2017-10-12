@@ -427,8 +427,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    power.shamu
-
+    power.shamu \
+    android.hardware.power@1.0-impl
 
 # Thermal HAL
 PRODUCT_PACKAGES += \
