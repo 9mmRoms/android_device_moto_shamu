@@ -443,12 +443,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicecomm=false \
     persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=false \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    audio.offload.video=true \
-    audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true
+    persist.audio.fluence.speaker=false
 
 # OEM Unlock reporting
 ADDITIONAL_DEFAULT_PROPERTIES += \
