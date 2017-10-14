@@ -442,4 +442,7 @@
         <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
         <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
    </string-array>
+
+    <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
+    <bool name="config_enableBurnInProtection">true</bool>
 </resources>
